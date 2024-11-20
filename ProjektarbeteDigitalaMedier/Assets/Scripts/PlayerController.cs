@@ -3,13 +3,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 4;
-    [SerializeField] private float laneWidth = 3;
-    [SerializeField] private int numberOfLanes = 3;
-    private int currentLane = 2;
+    private float laneWidth;
+    private int numberOfLanes;
+    private int currentLane;
 
     private float current, target;
     private Vector3 startPosition = new Vector3(0, 0, 0);
     private Vector3 goalPosition = new Vector3(0, 0, 0);
+    [SerializeField] private GameManager gM;
+
+    private void Start()
+    {
+        laneWidth = gM.laneWidth;
+        numberOfLanes = gM.numberOfLanes;
+        currentLane = gM.startLane;
+    }
 
     private void Update()
     {

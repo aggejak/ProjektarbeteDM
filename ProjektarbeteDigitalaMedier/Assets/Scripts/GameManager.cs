@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     //Build Indexes:
@@ -8,6 +10,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameState State;
     public static event Action<GameState> OnGameStateChanged;
+
+     public float laneWidth = 3;
+     public int numberOfLanes = 3;
+     public int startLane = 2;
+
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private int score = 0;
 
     private void Awake()
     {
@@ -35,6 +44,27 @@ public class GameManager : MonoBehaviour
         }
         OnGameStateChanged?.Invoke(newState); // has any script subscirbed to the event? if so invoke this
     }
+
+    public void increaseScore(int amount)
+    {
+        score += amount;
+        scoreText.text = score.ToString("F1");//one decimal
+    }
+
+    //MainMenu---------------------------------------
+    public void Shop()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void Settings()
+    {
+        //open settings window
+    }
+    //-----------------------------------------------
 }
 public enum GameState
 {
