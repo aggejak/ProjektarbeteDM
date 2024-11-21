@@ -21,14 +21,14 @@ public class ObstacleSpawner : MonoBehaviour
         if (timer > spawnIntervall)
         {
             SpawnObstacles();
-            gM.increaseScore(1);
+            gM.IncreaseScore(1);
             timer = 0;
         }
     }
     void SpawnObstacles()
     {
         //numb = number of obstacles to spawn per row
-        int numb = Random.Range(0, numberOfLanes);// will give numbers in intervall 0 to (numberOfLanes - 1)
+        int numb = Random.Range(1, numberOfLanes);// will give numbers in intervall 1 to (numberOfLanes - 1)
         Vector3 spawnPosition;
 
         int?[] used = new int?[numb];//? means its initialized to null by default
@@ -52,8 +52,6 @@ public class ObstacleSpawner : MonoBehaviour
             GameObject obstacle = Instantiate(_obstacle, spawnPosition, Quaternion.identity);
             used[i] = lane;
             Destroy(obstacle, 10f);
-            Debug.Log("lane: " + lane);
         }
-        Debug.Log("numb: " + numb);
     }
 }
