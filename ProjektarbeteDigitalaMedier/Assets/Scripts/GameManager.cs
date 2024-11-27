@@ -74,6 +74,12 @@ public class GameManager : MonoBehaviour
     {
         //open settings window
     }
+    public void DoExitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
+    }
+
     //-----------------------------------------------
 }
 public enum GameState

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 39da4c5fd40408143b5e812138a07d55
   - enabled: 1
-    path: Assets/Scenes/Shop.unity
+    path: Assets/Scenes/SkinChoice.unity
     guid: b20967d913a4c254f875a9e28115359f
   - enabled: 1
     path: Assets/Scenes/InGame.unity
