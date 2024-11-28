@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject gameOverMenu;
+
     private int score = 0;
 
     private void Awake()
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
                 break;
             case GameState.Paused:
+                Time.timeScale = 0;
                 break;
             case GameState.Settings:
                 break;
@@ -78,6 +80,15 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Game is exiting");
+    }
+    public void PauseGame()
+    {
+        ChangeGameState(GameState.Paused);
+    }
+    public void ResumeGame()
+    {
+        ChangeGameState(GameState.InGame);
+        Time.timeScale = 1;
     }
 
     //-----------------------------------------------
