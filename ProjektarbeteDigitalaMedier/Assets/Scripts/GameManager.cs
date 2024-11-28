@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore(int amount)
     {
         score += amount;
-        scoreText.text = score.ToString("F1");//one decimal
+        scoreText.text = score.ToString("d");//one decimal
     }
 
     //MainMenu---------------------------------------
