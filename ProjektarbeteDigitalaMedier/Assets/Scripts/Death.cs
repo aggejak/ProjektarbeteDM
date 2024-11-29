@@ -13,6 +13,5 @@ public class Death : MonoBehaviour
         {
             gM.ChangeGameState(GameState.GameOver);        
         }
-        Debug.Log("Death! from: " + gameObject.name + " player is: " + collision.name);
     }
 }

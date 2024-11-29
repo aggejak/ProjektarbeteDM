@@ -546,11 +546,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1065311476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 795, y: 404}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 797, y: 406}
   m_SizeDelta: {x: 104, y: 104}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &484285562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a688c823f381d42ad0bf683134863b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 6
   gM: {fileID: 1335526264}
 --- !u!65 &499201676
 BoxCollider:
@@ -1039,11 +1039,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1086770623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -752, y: 413.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -1153.5, y: 445}
   m_SizeDelta: {x: 903, y: 163}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &785038259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,11 +1412,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1086770623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -501, y: 398.09998}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -551, y: 398.09998}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &906167718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,6 +2240,7 @@ MonoBehaviour:
   numberOfLanes: 3
   startLane: 2
   scoreText: {fileID: 906167718}
+  obsSpawner: {fileID: 231993684}
   gameOverMenu: {fileID: 1069991972}
   pauseMenu: {fileID: 1958123269}
   pauseButton: {fileID: 484285560}

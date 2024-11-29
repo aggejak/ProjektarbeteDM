@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] private float spawnIntervall = 3;
+    public float spawnIntervall = 3;
     [SerializeField] private GameObject _obstacle;
     private float timer;
     [SerializeField] private GameManager gM;

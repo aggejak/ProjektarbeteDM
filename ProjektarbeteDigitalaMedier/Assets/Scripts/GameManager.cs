@@ -12,12 +12,17 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnGameStateChanged;
 
     public static float worldSpeed { get; private set; } = 9;// other scripts can read the value but not change it
+    private float timer = 0;
+    private float timeLimit = 20;
+    private float timeLimitIncrement = 5;
+    private float speedIncrement = 1;
 
     public float laneWidth = 3;
     public int numberOfLanes = 3;
     public int startLane = 2;
 
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private ObstacleSpawner obsSpawner;
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
@@ -27,6 +32,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= timeLimit)
+        {
+            IncreaseSpeed();
+        }
     }
     public void ChangeGameState(GameState newState)
     {
@@ -38,16 +51,12 @@ public class GameManager : MonoBehaviour
             case GameState.Shop:
                 break;
             case GameState.InGame:
-                
-                Debug.Log("Gamestate: InGame");
                 break;
             case GameState.GameOver:
                 gameOverMenu.SetActive(true);
                 Time.timeScale = 0;
                 break;
             case GameState.Paused:
-                
-                Debug.Log("Gamestate: Paused");
 
                 break;
             case GameState.Settings:
@@ -63,6 +72,14 @@ public class GameManager : MonoBehaviour
     {
         score += amount;
         scoreText.text = score.ToString("d");//one decimal
+    }
+
+    public void IncreaseSpeed()
+    {
+        worldSpeed += speedIncrement;
+        timeLimit += timeLimitIncrement;
+        obsSpawner.spawnIntervall -= (speedIncrement / 3);// make obstacles spawn faster
+        timer = 0;
     }
 
     //MainMenu---------------------------------------
