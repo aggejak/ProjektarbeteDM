@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseButton;
 
     private int score = 0;
 
@@ -36,15 +38,20 @@ public class GameManager : MonoBehaviour
             case GameState.Shop:
                 break;
             case GameState.InGame:
+                
+                Debug.Log("Gamestate: InGame");
                 break;
             case GameState.GameOver:
                 gameOverMenu.SetActive(true);
                 Time.timeScale = 0;
                 break;
             case GameState.Paused:
-                Time.timeScale = 0;
+                
+                Debug.Log("Gamestate: Paused");
+
                 break;
             case GameState.Settings:
+                //setActive
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -67,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
+        ChangeGameState(GameState.InGame);
     }
     public void MainMenu()
     {
@@ -83,12 +91,19 @@ public class GameManager : MonoBehaviour
     }
     public void PauseGame()
     {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+        pauseButton.SetActive(false);
         ChangeGameState(GameState.Paused);
+
     }
     public void ResumeGame()
     {
-        ChangeGameState(GameState.InGame);
         Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        pauseButton.SetActive(true);
+        ChangeGameState(GameState.InGame);
+        
     }
 
     //-----------------------------------------------
