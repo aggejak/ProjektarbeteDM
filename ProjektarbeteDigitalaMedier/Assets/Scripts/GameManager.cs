@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -8,10 +9,10 @@ public class GameManager : MonoBehaviour
     //MainMenu: 0, Shop: 1, InGame: 2
 
     public static GameManager Instance;
-    public GameState State;
+    [HideInInspector]public GameState State;
     public static event Action<GameState> OnGameStateChanged;
-
-    public static float worldSpeed { get; private set; } = 9;// other scripts can read the value but not change it
+    private int startSpeed = 9;
+    public static float worldSpeed { get; private set; }// other scripts can read the value but not change it
     private float timer = 0;
     private float timeLimit = 20;
     private float timeLimitIncrement = 5;
@@ -20,9 +21,12 @@ public class GameManager : MonoBehaviour
     public float laneWidth = 3;
     public int numberOfLanes = 3;
     public int startLane = 2;
-
+    [Space]
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private ObstacleSpawner obsSpawner;
+    [SerializeField] private Animator fadeAnimator;
+    [Header("Menyer")]
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
@@ -32,7 +36,21 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        Application.targetFrameRate = 60;
     }
+    private void Start()
+    {
+        worldSpeed = startSpeed;
+        if (SceneManager.GetActiveScene().buildIndex == 0 && State != GameState.MainMenu)
+        {
+            ChangeGameState(GameState.MainMenu);
+        }
+        if (State == GameState.InGame)
+        {
+            highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString("d");//one decimal 
+        }
+    }
+
     private void Update()
     {
         timer += Time.deltaTime;
@@ -47,20 +65,20 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.MainMenu:
+                PlayerPrefs.SetInt("HasPickedSkin", 0);
                 break;
             case GameState.Shop:
                 break;
             case GameState.InGame:
                 break;
             case GameState.GameOver:
+                UpdateHighScore();
                 gameOverMenu.SetActive(true);
                 Time.timeScale = 0;
                 break;
             case GameState.Paused:
-
                 break;
             case GameState.Settings:
-                //setActive
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -78,24 +96,32 @@ public class GameManager : MonoBehaviour
     {
         worldSpeed += speedIncrement;
         timeLimit += timeLimitIncrement;
-        obsSpawner.spawnIntervall -= (speedIncrement / 3);// make obstacles spawn faster
+        obsSpawner.spawnIntervall -= (speedIncrement / 4);// make obstacles spawn faster
         timer = 0;
     }
 
-    //MainMenu---------------------------------------
-    public void Shop()
+    private void UpdateHighScore()
     {
-        SceneManager.LoadScene(1);
+        if (score > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            Debug.Log("new highscore!!!!!!!!!!!");
+        }
     }
+
+    //MainMenu---------------------------------------
     public void PlayGame()
     {
         Time.timeScale = 1;
+        StartCoroutine(FadeOut());
         SceneManager.LoadScene(2);
         ChangeGameState(GameState.InGame);
     }
     public void MainMenu()
     {
+        StartCoroutine(FadeOut());
         SceneManager.LoadScene(0);
+        ChangeGameState(GameState.MainMenu);
     }
     public void Settings()
     {
@@ -112,7 +138,6 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
         ChangeGameState(GameState.Paused);
-
     }
     public void ResumeGame()
     {
@@ -120,10 +145,19 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
         ChangeGameState(GameState.InGame);
-        
-    }
 
-    //-----------------------------------------------
+    }
+    public void ResetGame()
+    {
+        PlayerPrefs.SetInt("HighScore", 0);
+        PlayerPrefs.SetInt("Skin", 0);
+        PlayerPrefs.SetInt("HasPickedSkin", 0);
+    }
+    public IEnumerator FadeOut()// IEnumerator has access to time related stuff
+    {
+        fadeAnimator.Play("Fade_Out");
+        yield return new WaitForSecondsRealtime(0.4f); //runs even when time.timeScale = 0
+    }
 }
 public enum GameState
 {

@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public float spawnIntervall = 3;
     [SerializeField] private GameObject _obstacle;
-    private float timer;
     [SerializeField] private GameManager gM;
+    [Header("StenSprites")]
+    [SerializeField] private Sprite[] stenar;// 3 sprites
+    private float timer;
+    public float spawnIntervall = 3;
     private float laneWidth;
     private int numberOfLanes;
 
@@ -50,6 +52,7 @@ public class ObstacleSpawner : MonoBehaviour
             //if lane has not yet been used
             spawnPosition = transform.position + new Vector3(lane * laneWidth, 0, 0);
             GameObject obstacle = Instantiate(_obstacle, spawnPosition, Quaternion.identity);
+            obstacle.GetComponentInChildren<SpriteRenderer>().sprite = stenar[Random.Range(0, 3)];
             used[i] = lane;
             Destroy(obstacle, 10f);
         }
