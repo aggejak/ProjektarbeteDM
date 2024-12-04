@@ -19,7 +19,7 @@ public class SkinManager : MonoBehaviour
         gDKButton.interactable = PlayerPrefs.GetInt("HighScore") >= gDKScoreLimit;
         KTSButton.interactable = PlayerPrefs.GetInt("HighScore") >= KTSScoreLimit;
 
-        if (PlayerPrefs.GetInt("HasPickedSkin") == 0)
+        if (skinPickerMenu.activeSelf == false)
         {
             Time.timeScale = 0;
             skinPickerMenu.SetActive(true);

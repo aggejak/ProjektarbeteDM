@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
             case GameState.GameOver:
                 UpdateHighScore();
                 gameOverMenu.SetActive(true);
+                pauseButton.SetActive(false);
                 Time.timeScale = 0;
                 break;
             case GameState.Paused:
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
     //MainMenu---------------------------------------
     public void PlayGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0;
         StartCoroutine(FadeOut());
         SceneManager.LoadScene(2);
         ChangeGameState(GameState.InGame);
@@ -147,6 +148,14 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.InGame);
 
     }
+    public void NewGame()
+    {
+        Time.timeScale = 0;
+        StartCoroutine(FadeOut());
+        SceneManager.LoadScene(2);
+        ChangeGameState(GameState.InGame);
+    }
+
     public void ResetGame()
     {
         PlayerPrefs.SetInt("HighScore", 0);
