@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
             case GameState.GameOver:
                 UpdateHighScore();
                 gameOverMenu.SetActive(true);
+                pauseButton.SetActive(false);
                 Time.timeScale = 0;
                 break;
             case GameState.Paused:

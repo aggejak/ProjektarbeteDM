@@ -1,10 +1,12 @@
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class PauseInput : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     GameManager gM;
+    [SerializeField] private GameObject skinPickerMenu;
     void Start()
     {
         gM = FindAnyObjectByType<GameManager>();
@@ -14,15 +16,18 @@ public class PauseInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (!skinPickerMenu.activeSelf)
         {
-            if (gM.State == GameState.InGame)
+            if (Input.GetKeyDown(KeyCode.P))
             {
-                gM.PauseGame();
-            }
-            else if (gM.State == GameState.Paused)
-            {
-                gM.ResumeGame();
+                if (gM.State == GameState.InGame)
+                {
+                    gM.PauseGame();
+                }
+                else if (gM.State == GameState.Paused)
+                {
+                    gM.ResumeGame();
+                }
             }
         }
     }
