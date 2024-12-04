@@ -3044,6 +3044,37 @@ RectTransform:
   m_AnchoredPosition: {x: -350, y: -70}
   m_SizeDelta: {x: 407, y: 498}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1783669049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1783669050}
+  m_Layer: 0
+  m_Name: BackgroundRepeater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1783669050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783669049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8238957, y: 1.3911008, z: -7.597436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871727576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3614,6 +3645,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -719809797684882739, guid: 68e7c5de46d95c94ca3e9c75911a34f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6604395155372666425, guid: 68e7c5de46d95c94ca3e9c75911a34f2, type: 3}
       propertyPath: m_ReceiveShadows
       value: 1
@@ -3833,3 +3868,4 @@ SceneRoots:
   - {fileID: 1970779760}
   - {fileID: 1887043051}
   - {fileID: 2584647844276207765}
+  - {fileID: 1783669050}
