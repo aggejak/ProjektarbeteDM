@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     //MainMenu---------------------------------------
     public void PlayGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0;
         StartCoroutine(FadeOut());
         SceneManager.LoadScene(2);
         ChangeGameState(GameState.InGame);
