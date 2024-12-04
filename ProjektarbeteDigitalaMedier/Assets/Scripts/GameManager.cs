@@ -147,6 +147,14 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.InGame);
 
     }
+    public void NewGame()
+    {
+        Time.timeScale = 0;
+        StartCoroutine(FadeOut());
+        SceneManager.LoadScene(2);
+        ChangeGameState(GameState.InGame);
+    }
+
     public void ResetGame()
     {
         PlayerPrefs.SetInt("HighScore", 0);
