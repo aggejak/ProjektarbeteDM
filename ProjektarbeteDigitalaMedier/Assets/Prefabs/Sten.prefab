@@ -156,7 +156,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.1}
+  m_Size: {x: 0.7, y: 3.17, z: 0.34}
   m_Center: {x: 0, y: 0.44, z: 0}
 --- !u!114 &7628769643789684579
 MonoBehaviour:
@@ -182,8 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f4701e3823ef84891ebe050cacda49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  audioClip: {fileID: 0}
 --- !u!114 &4887533716530341871
 MonoBehaviour:
   m_ObjectHideFlags: 0
