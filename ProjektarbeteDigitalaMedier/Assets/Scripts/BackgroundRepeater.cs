@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class BackgroundRepeater : MonoBehaviour
 {
-    [SerializeField] private float backgroundLength; // Length of the background
-    [SerializeField] private Transform otherBackground; // The other background to align with
+    [SerializeField] private float backgroundLength;
+    [SerializeField] private Transform otherBackground;
+    [SerializeField] private float speedModifier = 0.5f; // Ändra variablen för att sakta ner eller speed upp spelet
 
     private void Update()
     {
-        // Move the background backward
-        transform.position += Vector3.back * GameManager.worldSpeed * Time.deltaTime;
+        // Flytta på bakgrunden långsammare
+        transform.position += Vector3.back * (GameManager.worldSpeed * speedModifier) * Time.deltaTime;
 
-        // Check if this background has moved out of view
+        // Flytta på bakgrunden när den går ut u bild
         if (transform.position.z <= -backgroundLength)
         {
-            // Reposition it precisely at the end of the other background
             transform.position = new Vector3(
                 transform.position.x,
                 transform.position.y,
