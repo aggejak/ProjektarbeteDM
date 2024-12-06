@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_watershader 1
+  m_Name: OLD Shader Graphs_watershader 1
   m_Shader: {fileID: -6465566751694194690, guid: 2615a710d46ce0e43845bef977ed22eb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
