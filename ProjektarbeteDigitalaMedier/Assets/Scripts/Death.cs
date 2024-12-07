@@ -11,7 +11,6 @@ public class Death : MonoBehaviour
     {
         if (collision.CompareTag("Player")) 
         {
-
             gM.ChangeGameState(GameState.GameOver);        
         }
     }

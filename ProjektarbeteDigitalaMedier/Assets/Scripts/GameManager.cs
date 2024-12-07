@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
 
     private int score = 0;
+    private float respawnMenuDelay = 2;
 
     private void Awake()
     {
@@ -72,10 +73,8 @@ public class GameManager : MonoBehaviour
             case GameState.InGame:
                 break;
             case GameState.GameOver:
+                StartCoroutine(Wait());
                 UpdateHighScore();
-                gameOverMenu.SetActive(true);
-                pauseButton.SetActive(false);
-                Time.timeScale = 0;
                 break;
             case GameState.Paused:
                 break;
@@ -166,6 +165,16 @@ public class GameManager : MonoBehaviour
     {
         fadeAnimator.Play("Fade_Out");
         yield return new WaitForSecondsRealtime(0.4f); //runs even when time.timeScale = 0
+    }
+    public IEnumerator Wait()// IEnumerator has access to time related stuff
+    {
+        worldSpeed = 0;
+        obsSpawner.gameObject.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
+        yield return new WaitForSecondsRealtime(respawnMenuDelay); //runs even when time.timeScale = 0
+        Time.timeScale = 0;
+        gameOverMenu.SetActive(true);
+        pauseButton.SetActive(false);
     }
 }
 public enum GameState
