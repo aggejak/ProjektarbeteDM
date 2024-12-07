@@ -7,7 +7,7 @@ public class CollisionAudio : MonoBehaviour
 
 
 private void OnTriggerEnter(Collider collision){
-    audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip);
     }
 }
 
