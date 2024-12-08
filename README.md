@@ -10,7 +10,8 @@ Helt plötsligt är du en nolla i som dras med av de starka strömmarna i ström
 <img src="https://github.com/user-attachments/assets/fa1a0ea7-9a13-4188-9e90-0e823f7bc787" alt="Introduktion" style="width:500px;">
 
 ## Akta dig!
-Akta dig för stenar och stockar som försvårar det att hålla sig flytande. (psst det är möjligt att dyka under vissa hinder😉)
+Akta dig för stenar och stockar som försvårar det att hålla sig flytande.
+*(psst det är möjligt att dyka under vissa hinder😉)*
 
 <img src="https://github.com/user-attachments/assets/ed319953-0936-4f3b-ac30-621131b4e4c3" alt="Introduktion" style="width:500px;">
 
