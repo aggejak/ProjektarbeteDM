@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     bool diving = false;
 
     private float timer = 0;
-    private float timeLimit = 1;
+    private float timeLimit = 0.8f;
 
     private void Start()
     {

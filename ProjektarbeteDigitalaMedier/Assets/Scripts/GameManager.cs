@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         Application.targetFrameRate = 60;
+
+        float savedVolume = PlayerPrefs.GetFloat("Volume", 1.0f);
+        AudioListener.volume = savedVolume;
     }
     private void Start()
     {
