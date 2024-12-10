@@ -22,11 +22,14 @@ public class PlayerController : MonoBehaviour
     private float timer = 0;
     private float timeLimit = 0.8f;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
         laneWidth = gM.laneWidth;
         numberOfLanes = gM.numberOfLanes;
         currentLane = gM.startLane;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -79,6 +82,10 @@ public class PlayerController : MonoBehaviour
         timer = 0;
         diving = true;
         Particles();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
     void UP()
     {
@@ -96,6 +103,10 @@ public class PlayerController : MonoBehaviour
         startPosition = goalPosition;
         goalPosition.x += (direction * laneWidth);
         currentLane += direction;
+         if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     void Particles()
