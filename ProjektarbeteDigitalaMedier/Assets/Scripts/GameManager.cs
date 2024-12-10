@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject particlesCrash;
-    
+    private int i = 0;
+
 
     private int score = 0;
     private float respawnMenuDelay = 2;
@@ -101,7 +102,11 @@ public class GameManager : MonoBehaviour
     {
         worldSpeed += speedIncrement;
         timeLimit += timeLimitIncrement;
-        obsSpawner.spawnIntervall -= (speedIncrement / 4);// make obstacles spawn faster
+        if (i != 10)
+        {
+            obsSpawner.spawnIntervall -= (speedIncrement / 8);// make obstacles spawn faster
+            i += 1;
+        }
         timer = 0;
     }
 

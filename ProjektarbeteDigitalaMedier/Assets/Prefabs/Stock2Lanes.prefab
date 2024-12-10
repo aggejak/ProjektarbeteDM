@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -6006377908252689503}
   - component: {fileID: 7628769643789684579}
   - component: {fileID: 4959559937279164018}
+  - component: {fileID: 8492118952043605456}
   m_Layer: 0
   m_Name: Stock2Lanes
   m_TagString: CollisionTag
@@ -80,6 +81,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f4701e3823ef84891ebe050cacda49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8492118952043605456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3962912469670798377}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aefbfbf8fda887409cb5bcfbce94157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4086564980881828571
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,13 +119,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4086564980881828571}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.122787856, y: 0.6963643, z: -0.6963643, w: 0.122787856}
-  m_LocalPosition: {x: 0.101, y: 0.362, z: 0.045}
+  m_LocalRotation: {x: 0.015541241, y: 0.9353524, z: -0.33299065, w: 0.118286364}
+  m_LocalPosition: {x: 0.10100005, y: 0.18, z: 0.3}
   m_LocalScale: {x: 0.25, y: 0.17, z: 0.17}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8526842120574566361}
-  m_LocalEulerAnglesHint: {x: 90, y: 160, z: 0}
+  m_LocalEulerAnglesHint: {x: 38.8, y: 164.297, z: -3.657}
 --- !u!33 &130081424535946061
 MeshFilter:
   m_ObjectHideFlags: 0
