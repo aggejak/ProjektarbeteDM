@@ -164,13 +164,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(2);
         ChangeGameState(GameState.InGame);
     }
-
-    public void ResetGame()
-    {
-        PlayerPrefs.SetInt("HighScore", 0);
-        PlayerPrefs.SetInt("Skin", 0);
-        PlayerPrefs.SetInt("HasPickedSkin", 0);
-    }
     public IEnumerator FadeOut()// IEnumerator has access to time related stuff
     {
         fadeAnimator.Play("Fade_Out");
