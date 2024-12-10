@@ -14,10 +14,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 goalPosition = new Vector3(0, 0, 0);
 
     [SerializeField] private GameManager gM;
-
+    [SerializeField] private GameObject particlesNer;
 
     private float djup = 3;
-    bool diving = false;
+    public bool diving = false;
 
     private float timer = 0;
     private float timeLimit = 0.8f;
@@ -71,12 +71,14 @@ public class PlayerController : MonoBehaviour
     }
     void Dive()
     {
+
         targetY = 1;
         currentY = 0;
         startPosition = goalPosition;
         goalPosition.y += (-1 * djup);
         timer = 0;
         diving = true;
+        Particles();
     }
     void UP()
     {
@@ -94,5 +96,19 @@ public class PlayerController : MonoBehaviour
         startPosition = goalPosition;
         goalPosition.x += (direction * laneWidth);
         currentLane += direction;
+    }
+
+    void Particles()
+    {
+        if(particlesNer.activeSelf == true)
+        {
+            particlesNer.SetActive(false);
+            particlesNer.SetActive(true);
+        }
+        else
+        {
+            particlesNer.SetActive(true);
+        }
+        
     }
 }

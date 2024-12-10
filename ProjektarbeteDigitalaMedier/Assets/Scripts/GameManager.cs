@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
+    [SerializeField] private GameObject particlesCrash;
+    
 
     private int score = 0;
     private float respawnMenuDelay = 2;
@@ -171,6 +173,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator Wait()// IEnumerator has access to time related stuff
     {
+        particlesCrash.SetActive(true);
         worldSpeed = 0;
         obsSpawner.gameObject.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
